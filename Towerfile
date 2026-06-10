@@ -1,0 +1,163 @@
+# =============================================================================
+# Towerfile — SynthGen Clinical Data Pipeline
+# =============================================================================
+# Orchestrates the end-to-end pipeline:
+#   ingest → cluster → synthetic_gen → validate
+#
+# Schedule : Daily at 02:00 UTC
+# Docs     : https://tower.nf/docs/towerfile
+# =============================================================================
+
+version: "1.0"
+
+name: synthgen-clinical-pipeline
+description: >
+  Generate realistic synthetic clinical thyroid datasets for ML training.
+  Ingests UCI data, clusters patient profiles, synthesises new records,
+  and validates distributional fidelity.
+
+# ---------------------------------------------------------------------------
+# Global settings
+# ---------------------------------------------------------------------------
+defaults:
+  working_dir: /workspace/synthgen
+  image:        python:3.11-slim
+  env:
+    PYTHONPATH:      /workspace/synthgen/src
+    SYNTHGEN_RUN_ID: "{{ run.id }}"
+    LOG_LEVEL:       INFO
+
+# ---------------------------------------------------------------------------
+# Pipeline schedule  (cron — UTC)
+# ---------------------------------------------------------------------------
+schedule:
+  cron: "0 2 * * *"        # 02:00 UTC daily
+  timezone: UTC
+  enabled: true
+
+# ---------------------------------------------------------------------------
+# Pipeline steps
+# ---------------------------------------------------------------------------
+steps:
+
+  # ── Step 1: Ingest ────────────────────────────────────────────────────────
+  - name: ingest
+    description: >
+      Download the UCI Thyroid Disease dataset, clean missing values,
+      standardise numeric features, and persist to data/processed/.
+    command: python src/01_ingest.py
+    env:
+      INGEST_SOURCE: uci                   # set to 'local' for offline runs
+    outputs:
+      - path: data/processed/thyroid_clean.csv
+        description: MinMax-scaled, de-duplicated thyroid records
+      - path: data/processed/ingest_log.txt
+        description: Detailed audit log of all ingest operations
+      - path: data/processed/feature_metadata.json
+        description: Column-type registry (numeric vs categorical)
+    on_failure:
+      action: abort                        # downstream steps cannot proceed
+      notify: slack                        # requires TOWER_SLACK_WEBHOOK env var
+
+  # ── Step 2: Cluster ───────────────────────────────────────────────────────
+  - name: cluster
+    description: >
+      Run K-means clustering (k=4) on the cleaned dataset.
+      Assigns each record a cluster ID (0–3) mapping to
+      normal / borderline / hyperthyroid / hypothyroid.
+    command: python src/02_cluster.py
+    depends_on:
+      - ingest
+    inputs:
+      - path: data/processed/thyroid_clean.csv
+        from_step: ingest
+    outputs:
+      - path: data/processed/thyroid_clustered.csv
+        description: Original records with cluster_id and diagnosis_class columns
+      - path: data/processed/cluster_metadata.json
+        description: Centroids, inertia, silhouette score
+      - path: data/processed/cluster_log.txt
+        description: Clustering audit log
+    on_failure:
+      action: abort
+      notify: slack
+
+  # ── Step 3: Synthetic Generation ─────────────────────────────────────────
+  - name: synthetic_gen
+    description: >
+      Generate synthetic patient records using CTGAN / Gaussian Copula.
+      Produces N synthetic rows per diagnosis class, preserving
+      marginal distributions and inter-feature correlations.
+    command: python src/03_synthetic_gen.py --n-samples 1000
+    depends_on:
+      - cluster
+    inputs:
+      - path: data/processed/thyroid_clustered.csv
+        from_step: cluster
+      - path: data/processed/cluster_metadata.json
+        from_step: cluster
+    env:
+      SYNTH_N_SAMPLES: "1000"
+      SYNTH_EPOCHS:    "300"
+      SYNTH_SEED:      "42"
+    outputs:
+      - path: data/synthetic/thyroid_synthetic.csv
+        description: Generated synthetic clinical records
+      - path: data/synthetic/synthesis_report.json
+        description: Fidelity metrics (KS-statistic, correlation delta)
+      - path: data/synthetic/synth_log.txt
+        description: Synthesis audit log
+    on_failure:
+      action: abort
+      notify: slack
+
+  # ── Step 4: Validate ─────────────────────────────────────────────────────
+  - name: validate
+    description: >
+      Statistical validation of synthetic vs real distributions.
+      Checks KS-test p-values, class balance, and feature correlation
+      matrices. Fails the pipeline if fidelity thresholds are not met.
+    command: python src/04_validate.py
+    depends_on:
+      - synthetic_gen
+    inputs:
+      - path: data/processed/thyroid_clean.csv
+        from_step: ingest
+      - path: data/synthetic/thyroid_synthetic.csv
+        from_step: synthetic_gen
+    env:
+      VALIDATE_KS_ALPHA:      "0.05"      # p-value threshold
+      VALIDATE_CORR_DELTA:    "0.10"      # max allowed correlation delta
+      VALIDATE_CLASS_BALANCE: "0.15"      # max class proportion deviation
+    outputs:
+      - path: data/reports/validation_report.html
+        description: Full HTML fidelity report with distribution plots
+      - path: data/reports/validation_summary.json
+        description: Machine-readable pass/fail summary
+      - path: data/reports/validate_log.txt
+        description: Validation audit log
+    on_failure:
+      action: notify                       # warn but don't abort; metrics logged
+      notify: slack
+
+# ---------------------------------------------------------------------------
+# Notifications
+# ---------------------------------------------------------------------------
+notifications:
+  slack:
+    webhook_url: "{{ env.TOWER_SLACK_WEBHOOK }}"
+    on:
+      - pipeline_start
+      - pipeline_success
+      - pipeline_failure
+      - step_failure
+
+# ---------------------------------------------------------------------------
+# Artifact retention
+# ---------------------------------------------------------------------------
+artifacts:
+  retain_days: 30
+  paths:
+    - data/processed/
+    - data/synthetic/
+    - data/reports/

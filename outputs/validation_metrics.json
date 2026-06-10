@@ -1,0 +1,149 @@
+{
+  "summary": {
+    "total_features": 6,
+    "passed_tests": 6,
+    "pass_rate": 100.0,
+    "real_sample_size": 100,
+    "synthetic_sample_size": 500,
+    "ks_alpha": 0.05,
+    "diff_warning_threshold_pct": 10.0
+  },
+  "features": {
+    "age": {
+      "real_mean": 0.11704845814977974,
+      "real_std": 0.03771165162110258,
+      "real_min": 0.03524229074889868,
+      "real_max": 0.19603524229074892,
+      "synthetic_mean": 0.11226521217777874,
+      "synthetic_std": 0.045172335155265635,
+      "synthetic_min": 0.0,
+      "synthetic_max": 0.29048529556898056,
+      "mean_diff_pct": 4.086551884246243,
+      "std_diff_pct": 19.78349717780122,
+      "min_diff_pct": 100.0,
+      "max_diff_pct": 48.18013953743501,
+      "ks_statistic": 0.108,
+      "p_value": 0.2724966677507765,
+      "status": "PASS",
+      "warnings": [
+        "std diff 19.8%",
+        "min diff 100.0%",
+        "max diff 48.2%"
+      ]
+    },
+    "TSH": {
+      "real_mean": 0.007791817906045041,
+      "real_std": 0.023819239975191076,
+      "real_min": 0.0,
+      "real_max": 0.20501260473435914,
+      "synthetic_mean": 0.009340347799083598,
+      "synthetic_std": 0.04290302066593257,
+      "synthetic_min": 0.0,
+      "synthetic_max": 0.5547138258973642,
+      "mean_diff_pct": 19.87379468708039,
+      "std_diff_pct": 80.11918394801096,
+      "min_diff_pct": 0.0,
+      "max_diff_pct": 170.5754734525339,
+      "ks_statistic": 0.144,
+      "p_value": 0.05895422140436825,
+      "status": "PASS",
+      "warnings": [
+        "mean diff 19.9%",
+        "std diff 80.1%",
+        "max diff 170.6%"
+      ]
+    },
+    "T3": {
+      "real_mean": 0.18909952606635078,
+      "real_std": 0.06215399026327072,
+      "real_min": 0.05213270142180095,
+      "real_max": 0.4028436018957346,
+      "synthetic_mean": 0.18674831303218872,
+      "synthetic_std": 0.07008478457619377,
+      "synthetic_min": 0.0,
+      "synthetic_max": 0.5418693050398937,
+      "mean_diff_pct": 1.2433733087924637,
+      "std_diff_pct": 12.759911760017244,
+      "min_diff_pct": 100.0,
+      "max_diff_pct": 34.511086309903035,
+      "ks_statistic": 0.144,
+      "p_value": 0.05895422140436825,
+      "status": "PASS",
+      "warnings": [
+        "std diff 12.8%",
+        "min diff 100.0%",
+        "max diff 34.5%"
+      ]
+    },
+    "TT4": {
+      "real_mean": 0.2523130841121495,
+      "real_std": 0.0861783615470407,
+      "real_min": 0.0630841121495327,
+      "real_max": 0.48831775700934577,
+      "synthetic_mean": 0.24957938833082688,
+      "synthetic_std": 0.08064925017150897,
+      "synthetic_min": 0.039098510508631806,
+      "synthetic_max": 0.6998568430051287,
+      "mean_diff_pct": 1.0834538331383206,
+      "std_diff_pct": 6.415892895008978,
+      "min_diff_pct": 38.021620378909574,
+      "max_diff_pct": 43.31996593597853,
+      "ks_statistic": 0.066,
+      "p_value": 0.8458839028922771,
+      "status": "PASS",
+      "warnings": [
+        "min diff 38.0%",
+        "max diff 43.3%"
+      ]
+    },
+    "T4U": {
+      "real_mean": 0.3812707182320442,
+      "real_std": 0.0993001214416209,
+      "real_min": 0.22099447513812154,
+      "real_max": 0.8674033149171271,
+      "synthetic_mean": 0.37916326338118334,
+      "synthetic_std": 0.1024432369616972,
+      "synthetic_min": 0.10704517612658782,
+      "synthetic_max": 0.8732924269870921,
+      "mean_diff_pct": 0.552745005080164,
+      "std_diff_pct": 3.1652685560149676,
+      "min_diff_pct": 51.56205780271901,
+      "max_diff_pct": 0.6789358501042462,
+      "ks_statistic": 0.086,
+      "p_value": 0.5499406780599139,
+      "status": "PASS",
+      "warnings": [
+        "min diff 51.6%"
+      ]
+    },
+    "FTI": {
+      "real_mean": 0.2755725190839695,
+      "real_std": 0.07922373932525131,
+      "real_min": 0.06106870229007634,
+      "real_max": 0.5267175572519084,
+      "synthetic_mean": 0.2759459262114242,
+      "synthetic_std": 0.07986276882341119,
+      "synthetic_min": 0.023268122977517902,
+      "synthetic_max": 0.7288886494694687,
+      "mean_diff_pct": 0.1355023094087713,
+      "std_diff_pct": 0.806613653435812,
+      "min_diff_pct": 61.89844862431444,
+      "max_diff_pct": 38.38320736304407,
+      "ks_statistic": 0.146,
+      "p_value": 0.05344703231951623,
+      "status": "PASS",
+      "warnings": [
+        "min diff 61.9%",
+        "max diff 38.4%"
+      ]
+    }
+  },
+  "warnings": [
+    "age: std diff 19.8%, min diff 100.0%, max diff 48.2%",
+    "TSH: mean diff 19.9%, std diff 80.1%, max diff 170.6%",
+    "T3: std diff 12.8%, min diff 100.0%, max diff 34.5%",
+    "TT4: min diff 38.0%, max diff 43.3%",
+    "T4U: min diff 51.6%",
+    "FTI: min diff 61.9%, max diff 38.4%"
+  ]
+}

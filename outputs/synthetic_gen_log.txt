@@ -1,0 +1,39 @@
+2026-06-10 08:16:34 [INFO] Starting run_synthetic_gen().
+2026-06-10 08:16:34 [INFO] clustered_data validation passed.
+2026-06-10 08:16:34 [INFO] Input shape: 2753 rows, 33 columns.
+2026-06-10 08:16:34 [INFO] Detected 6 numeric and 24 categorical features.
+2026-06-10 08:16:34 [INFO] Found cluster stats at outputs/cluster_stats.json.
+2026-06-10 08:16:34 [WARNING] cluster_stats.json exists but does not contain a usable borderline_cluster.
+2026-06-10 08:16:34 [WARNING] Could not read borderline cluster from outputs/cluster_stats.json; using smallest cluster 0.
+2026-06-10 08:16:34 [INFO] Fitting per-cluster GMM and categorical models.
+2026-06-10 08:16:34 [INFO] Fitting GMMs for each cluster...
+2026-06-10 08:16:34 [DEBUG] Cluster 0 GMM: 1 components over 6 numeric features.
+2026-06-10 08:16:35 [DEBUG] Cluster 1 GMM: 4 components over 6 numeric features.
+2026-06-10 08:16:35 [DEBUG] Cluster 2 GMM: 4 components over 6 numeric features.
+2026-06-10 08:16:35 [DEBUG] Cluster 3 GMM: 4 components over 6 numeric features.
+2026-06-10 08:16:35 [INFO] Generation plan prepared for 4 clusters.
+2026-06-10 08:16:35 [INFO] Sampling synthetic records.
+2026-06-10 08:16:35 [INFO] Generating synthetic samples...
+2026-06-10 08:16:35 [INFO]   Cluster 0 (borderline): Generated 6 samples (0.171x from 35 real)
+2026-06-10 08:16:35 [INFO]   Cluster 1 (normal): Generated 238 samples (0.181x from 1312 real)
+2026-06-10 08:16:35 [INFO]   Cluster 2 (normal): Generated 192 samples (0.182x from 1057 real)
+2026-06-10 08:16:35 [INFO]   Cluster 3 (normal): Generated 64 samples (0.183x from 349 real)
+2026-06-10 08:16:35 [INFO] Total synthetic samples: 500
+2026-06-10 08:16:35 [INFO] Calibrating numeric moments.
+2026-06-10 08:16:35 [INFO] Calibrating synthetic numeric moments against real data...
+2026-06-10 08:16:35 [INFO] Moment calibration complete; 99 synthetic rows carry extreme flags.
+2026-06-10 08:16:35 [INFO] Combining real and synthetic data.
+2026-06-10 08:16:35 [INFO] Validating synthetic distribution quality.
+2026-06-10 08:16:35 [INFO] Validating synthetic data...
+2026-06-10 08:16:35 [INFO]   age: mean diff = 0.0% PASS
+2026-06-10 08:16:35 [INFO]   TSH: mean diff = 1.8% PASS
+2026-06-10 08:16:35 [INFO]   T3: mean diff = 0.0% PASS
+2026-06-10 08:16:35 [INFO]   TT4: mean diff = 0.0% PASS
+2026-06-10 08:16:35 [INFO]   T4U: mean diff = 0.0% PASS
+2026-06-10 08:16:35 [INFO]   FTI: mean diff = 0.0% PASS
+2026-06-10 08:16:35 [INFO] All numeric validation checks passed.
+2026-06-10 08:16:35 [INFO] Top plot features: ['T4U', 'TT4', 'FTI', 'T3', 'age', 'TSH']
+2026-06-10 08:16:35 [INFO] Creating validation plots.
+2026-06-10 08:16:37 [INFO] Saving synthetic CSV and report.
+2026-06-10 08:16:37 [INFO] Validation report: outputs/synthetic_report.json
+2026-06-10 08:16:37 [INFO] Synthetic generation complete: 500 synthetic rows, 3253 combined rows.

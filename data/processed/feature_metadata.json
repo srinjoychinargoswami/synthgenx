@@ -1,0 +1,41 @@
+{
+  "numeric_columns": [
+    "age",
+    "TSH",
+    "T3",
+    "TT4",
+    "T4U",
+    "FTI",
+    "TBG"
+  ],
+  "categorical_columns": [
+    "sex",
+    "on_thyroxine",
+    "query_on_thyroxine",
+    "on_antithyroid_medication",
+    "sick",
+    "pregnant",
+    "thyroid_surgery",
+    "I131_treatment",
+    "query_hypothyroid",
+    "query_hyperthyroid",
+    "lithium",
+    "goitre",
+    "tumor",
+    "hypopituitary",
+    "psych",
+    "TSH_measured",
+    "T3_measured",
+    "TT4_measured",
+    "T4U_measured",
+    "FTI_measured",
+    "TBG_measured",
+    "referral_source",
+    "target"
+  ],
+  "scaler": "MinMaxScaler",
+  "scale_range": [
+    0,
+    1
+  ]
+}

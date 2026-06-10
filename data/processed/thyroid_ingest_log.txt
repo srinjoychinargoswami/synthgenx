@@ -1,0 +1,23 @@
+2026-06-10 08:16:32 [INFO] SynthGen ingest started  dataset=thyroid
+2026-06-10 08:16:32 [INFO] Acquiring data…
+2026-06-10 08:16:32 [INFO] Attempting download: https://archive.ics.uci.edu/ml/machine-learning-databases/thyroid-disease/allhypo.data
+2026-06-10 08:16:33 [INFO] Download succeeded from https://archive.ics.uci.edu/ml/machine-learning-databases/thyroid-disease/allhypo.data
+2026-06-10 08:16:33 [INFO] Thyroid download parsed: (2800, 30)
+2026-06-10 08:16:33 [INFO] Cleaning data…
+2026-06-10 08:16:33 [INFO] --- Cleaning  input: (2800, 30) ---
+2026-06-10 08:16:33 [INFO] Removed 0 row(s) with >50% missing.
+2026-06-10 08:16:33 [INFO] Removed 47 duplicate row(s).
+2026-06-10 08:16:33 [INFO]   Numeric 'age': filled 1 → median=55.0000
+2026-06-10 08:16:33 [INFO]   Numeric 'TSH': filled 237 → median=1.4000
+2026-06-10 08:16:33 [INFO]   Numeric 'T3': filled 538 → median=2.0000
+2026-06-10 08:16:33 [INFO]   Numeric 'TT4': filled 137 → median=104.0000
+2026-06-10 08:16:33 [INFO]   Numeric 'T4U': filled 250 → median=0.9800
+2026-06-10 08:16:33 [INFO]   Numeric 'FTI': filled 248 → median=107.0000
+2026-06-10 08:16:33 [INFO]   Numeric 'TBG': filled 2753 → median=nan
+2026-06-10 08:16:33 [INFO]   Categorical 'sex': filled 109 → mode='F'
+2026-06-10 08:16:33 [INFO] Post-cleaning shape: (2753, 30)
+2026-06-10 08:16:33 [INFO] Standardising features…
+2026-06-10 08:16:33 [INFO] MinMaxScaler applied to: ['age', 'TSH', 'T3', 'TT4', 'T4U', 'FTI', 'TBG']
+2026-06-10 08:16:33 [INFO] Clean CSV → data/processed/thyroid_clean.csv
+2026-06-10 08:16:33 [INFO] Feature metadata → data/processed/feature_metadata.json
+2026-06-10 08:16:33 [INFO] Ingest complete: 2753 rows, 30 cols (0.7s)

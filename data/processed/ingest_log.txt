@@ -1,0 +1,80 @@
+2026-06-09 15:39:21 [INFO] SynthGen — Step 1: Data Ingestion started.
+2026-06-09 15:39:21 [INFO] Attempting download: https://archive.ics.uci.edu/ml/machine-learning-databases/thyroid-disease/allhypo.data
+2026-06-09 15:39:21 [INFO] Removed columns with 100% missing values
+2026-06-09 15:39:21 [INFO] Download successful: 2800 rows from https://archive.ics.uci.edu/ml/machine-learning-databases/thyroid-disease/allhypo.data
+2026-06-09 15:39:21 [INFO] Acquisition complete. Shape: (2800, 29)
+2026-06-09 15:39:21 [INFO] --- Cleaning ---
+2026-06-09 15:39:21 [INFO] Input shape: (2800, 29)
+2026-06-09 15:39:21 [DEBUG] No rows exceeded the 50% missingness threshold.
+2026-06-09 15:39:21 [INFO] Removed 47 duplicate row(s).
+2026-06-09 15:39:21 [INFO] Imputing missing values …
+2026-06-09 15:39:21 [INFO]   Numeric 'age': filled 1 missing value(s) with median=55.0000
+2026-06-09 15:39:21 [INFO]   Numeric 'TSH': filled 237 missing value(s) with median=1.4000
+2026-06-09 15:39:21 [INFO]   Numeric 'T3': filled 538 missing value(s) with median=2.0000
+2026-06-09 15:39:21 [INFO]   Numeric 'TT4': filled 137 missing value(s) with median=104.0000
+2026-06-09 15:39:21 [INFO]   Numeric 'T4U': filled 250 missing value(s) with median=0.9800
+2026-06-09 15:39:21 [INFO]   Numeric 'FTI': filled 248 missing value(s) with median=107.0000
+2026-06-09 15:39:21 [INFO]   Categorical 'sex': filled 109 missing value(s) with mode='F'
+2026-06-09 15:39:21 [INFO] Post-cleaning shape: (2753, 29)
+2026-06-09 15:39:21 [INFO] --- Standardization ---
+2026-06-09 15:39:21 [INFO] MinMaxScaler applied to: ['age', 'TSH', 'T3', 'TT4', 'T4U', 'FTI']
+2026-06-09 15:39:21 [INFO] Feature metadata saved to: data/processed/feature_metadata.json
+2026-06-09 15:39:21 [INFO] Clean dataset saved to: data/processed/thyroid_clean.csv  (2753 rows, 29 cols)
+2026-06-09 15:39:21 [DEBUG] 
+============================================================
+2026-06-09 15:39:21 [DEBUG] DATASET SUMMARY
+2026-06-09 15:39:21 [DEBUG] ============================================================
+2026-06-09 15:39:21 [DEBUG] Shape          : 2753 rows × 29 columns
+2026-06-09 15:39:21 [DEBUG] Memory usage   : 3767.6 KB
+2026-06-09 15:39:21 [DEBUG] 
+Column dtypes:
+2026-06-09 15:39:21 [DEBUG] age                          float64
+sex                           object
+on_thyroxine                  object
+query_on_thyroxine            object
+on_antithyroid_medication     object
+sick                          object
+pregnant                      object
+thyroid_surgery               object
+I131_treatment                object
+query_hypothyroid             object
+query_hyperthyroid            object
+lithium                       object
+goitre                        object
+tumor                         object
+hypopituitary                 object
+psych                         object
+TSH_measured                  object
+TSH                          float64
+T3_measured                   object
+T3                           float64
+TT4_measured                  object
+TT4                          float64
+T4U_measured                  object
+T4U                          float64
+FTI_measured                  object
+FTI                          float64
+TBG_measured                  object
+referral_source               object
+target                        object
+2026-06-09 15:39:21 [DEBUG] 
+Descriptive statistics (numeric):
+2026-06-09 15:39:21 [DEBUG]                age          TSH           T3          TT4          T4U          FTI
+count  2753.000000  2753.000000  2753.000000  2753.000000  2753.000000  2753.000000
+mean      0.112265     0.009175     0.186738     0.249579     0.379163     0.275946
+std       0.045172     0.042941     0.070112     0.080649     0.102443     0.079863
+min       0.000000     0.000000     0.000000     0.000000     0.000000     0.000000
+25%       0.077093     0.001182     0.156398     0.203271     0.320442     0.234097
+50%       0.118943     0.002918     0.184834     0.238318     0.370166     0.267176
+75%       0.145374     0.005011     0.213270     0.285047     0.419890     0.305344
+max       1.000000     1.000000     1.000000     1.000000     1.000000     1.000000
+2026-06-09 15:39:21 [DEBUG] 
+First 5 rows:
+2026-06-09 15:39:21 [DEBUG]         age sex on_thyroxine query_on_thyroxine on_antithyroid_medication sick pregnant thyroid_surgery I131_treatment query_hypothyroid query_hyperthyroid lithium goitre tumor hypopituitary psych TSH_measured       TSH T3_measured        T3 TT4_measured       TT4 T4U_measured       T4U FTI_measured       FTI TBG_measured referral_source    target
+0  0.088106   F            f                  f                         f    f        f               f              f                 f                  f       f      f     f             f     f            t  0.002709           t  0.232227            t  0.287383            t  0.458564            t  0.272265            f            SVHC  negative
+1  0.048458   F            f                  f                         f    f        f               f              f                 f                  f       f      f     f             f     f            t  0.008567           t  0.184834            t  0.233645            f  0.370166            f  0.267176            f           other  negative
+2  0.099119   M            f                  f                         f    f        f               f              f                 f                  f       f      f     f             f     f            t  0.002040           f  0.184834            t  0.250000            t  0.331492            t  0.300254            f           other  negative
+3  0.151982   F            t                  f                         f    f        f               f              f                 f                  f       f      f     f             f     f            t  0.000324           t  0.175355            t  0.404206            f  0.370166            f  0.267176            f           other  negative
+4  0.151982   F            f                  f                         f    f        f               f              f                 f                  f       f      f     f             f     f            t  0.001496           t  0.109005            t  0.137850            t  0.309392            t  0.173028            f             SVI  negative
+2026-06-09 15:39:21 [DEBUG] ============================================================
+2026-06-09 15:39:21 [INFO] Data ingestion complete. 2753 rows, 29 columns (0.8s)

@@ -1,0 +1,337 @@
+{
+  "input": {
+    "path": "<provided DataFrame>",
+    "real_rows": 2753,
+    "real_columns": 33,
+    "clusters": {
+      "0": 35,
+      "1": 1312,
+      "2": 1057,
+      "3": 349
+    }
+  },
+  "generation": {
+    "borderline_cluster": 0,
+    "plan": {
+      "0": {
+        "real_count": 35,
+        "multiplier": 0.171,
+        "synthetic_count": 6,
+        "label": "borderline"
+      },
+      "1": {
+        "real_count": 1312,
+        "multiplier": 0.181,
+        "synthetic_count": 238,
+        "label": "normal"
+      },
+      "2": {
+        "real_count": 1057,
+        "multiplier": 0.182,
+        "synthetic_count": 192,
+        "label": "normal"
+      },
+      "3": {
+        "real_count": 349,
+        "multiplier": 0.183,
+        "synthetic_count": 64,
+        "label": "normal"
+      }
+    },
+    "total_synthetic_rows": 500,
+    "combined_rows": 3253,
+    "clusters": {
+      "0": {
+        "real_count": 35,
+        "multiplier": 0.171,
+        "synthetic_count": 6,
+        "label": "borderline",
+        "extreme_rows_before_clipping": 0,
+        "extreme_counts_by_feature": {
+          "age": 0,
+          "TSH": 0,
+          "T3": 0,
+          "TT4": 0,
+          "T4U": 0,
+          "FTI": 0
+        },
+        "modeled_numeric_columns": [
+          "age",
+          "TSH",
+          "T3",
+          "TT4",
+          "T4U",
+          "FTI"
+        ],
+        "constant_numeric_columns": [],
+        "all_missing_numeric_columns": []
+      },
+      "1": {
+        "real_count": 1312,
+        "multiplier": 0.181,
+        "synthetic_count": 238,
+        "label": "normal",
+        "extreme_rows_before_clipping": 0,
+        "extreme_counts_by_feature": {
+          "age": 0,
+          "TSH": 0,
+          "T3": 0,
+          "TT4": 0,
+          "T4U": 0,
+          "FTI": 0
+        },
+        "modeled_numeric_columns": [
+          "age",
+          "TSH",
+          "T3",
+          "TT4",
+          "T4U",
+          "FTI"
+        ],
+        "constant_numeric_columns": [],
+        "all_missing_numeric_columns": []
+      },
+      "2": {
+        "real_count": 1057,
+        "multiplier": 0.182,
+        "synthetic_count": 192,
+        "label": "normal",
+        "extreme_rows_before_clipping": 0,
+        "extreme_counts_by_feature": {
+          "age": 0,
+          "TSH": 0,
+          "T3": 0,
+          "TT4": 0,
+          "T4U": 0,
+          "FTI": 0
+        },
+        "modeled_numeric_columns": [
+          "age",
+          "TSH",
+          "T3",
+          "TT4",
+          "T4U",
+          "FTI"
+        ],
+        "constant_numeric_columns": [],
+        "all_missing_numeric_columns": []
+      },
+      "3": {
+        "real_count": 349,
+        "multiplier": 0.183,
+        "synthetic_count": 64,
+        "label": "normal",
+        "extreme_rows_before_clipping": 0,
+        "extreme_counts_by_feature": {
+          "age": 0,
+          "TSH": 0,
+          "T3": 0,
+          "TT4": 0,
+          "T4U": 0,
+          "FTI": 0
+        },
+        "modeled_numeric_columns": [
+          "age",
+          "TSH",
+          "T3",
+          "TT4",
+          "T4U",
+          "FTI"
+        ],
+        "constant_numeric_columns": [],
+        "all_missing_numeric_columns": []
+      }
+    },
+    "total_extreme_rows": 0,
+    "extreme_counts_by_feature": {
+      "age": 0,
+      "TSH": 0,
+      "T3": 0,
+      "TT4": 0,
+      "T4U": 0,
+      "FTI": 0
+    }
+  },
+  "calibration": {
+    "age": {
+      "status": "CALIBRATED",
+      "real_mean": 0.11226519407742616,
+      "real_std": 0.045172380231373155,
+      "pre_calibration_synthetic_mean": 0.11190709384568308,
+      "pre_calibration_synthetic_std": 0.043119196852415526,
+      "post_calibration_clipped_values": 1
+    },
+    "TSH": {
+      "status": "CALIBRATED",
+      "real_mean": 0.009174693631791443,
+      "real_std": 0.04294102634485513,
+      "pre_calibration_synthetic_mean": 0.01264876918450518,
+      "pre_calibration_synthetic_std": 0.04978608150595427,
+      "post_calibration_clipped_values": 97
+    },
+    "T3": {
+      "status": "CALIBRATED",
+      "real_mean": 0.18673812110183982,
+      "real_std": 0.07011236158461878,
+      "pre_calibration_synthetic_mean": 0.18231181603216337,
+      "pre_calibration_synthetic_std": 0.06170348869773924,
+      "post_calibration_clipped_values": 1
+    },
+    "TT4": {
+      "status": "CALIBRATED",
+      "real_mean": 0.24957938833082685,
+      "real_std": 0.08064925017150898,
+      "pre_calibration_synthetic_mean": 0.24488267746477227,
+      "pre_calibration_synthetic_std": 0.07864175012847069,
+      "post_calibration_clipped_values": 0
+    },
+    "T4U": {
+      "status": "CALIBRATED",
+      "real_mean": 0.3791632633811834,
+      "real_std": 0.1024432369616972,
+      "pre_calibration_synthetic_mean": 0.3811025269037879,
+      "pre_calibration_synthetic_std": 0.09410711129358829,
+      "post_calibration_clipped_values": 0
+    },
+    "FTI": {
+      "status": "CALIBRATED",
+      "real_mean": 0.2759459262114242,
+      "real_std": 0.07986276882341119,
+      "pre_calibration_synthetic_mean": 0.2695309089043744,
+      "pre_calibration_synthetic_std": 0.078813286532867,
+      "post_calibration_clipped_values": 0
+    }
+  },
+  "features": {
+    "numeric_columns": [
+      "age",
+      "TSH",
+      "T3",
+      "TT4",
+      "T4U",
+      "FTI"
+    ],
+    "categorical_columns": [
+      "sex",
+      "on_thyroxine",
+      "query_on_thyroxine",
+      "on_antithyroid_medication",
+      "sick",
+      "pregnant",
+      "thyroid_surgery",
+      "I131_treatment",
+      "query_hypothyroid",
+      "query_hyperthyroid",
+      "lithium",
+      "goitre",
+      "tumor",
+      "hypopituitary",
+      "psych",
+      "TSH_measured",
+      "T3_measured",
+      "TT4_measured",
+      "T4U_measured",
+      "FTI_measured",
+      "TBG_measured",
+      "referral_source",
+      "target",
+      "diagnosis_class"
+    ],
+    "top_plot_features": [
+      "T4U",
+      "TT4",
+      "FTI",
+      "T3",
+      "age",
+      "TSH"
+    ]
+  },
+  "validation": {
+    "thresholds": {
+      "mean_diff_warning_pct": 0.1,
+      "std_diff_warning_pct": 0.1
+    },
+    "features": {
+      "age": {
+        "status": "PASS",
+        "real_mean": 0.11226519407742616,
+        "synthetic_mean": 0.11226521217777873,
+        "mean_diff_pct": 1.612285331419423e-07,
+        "real_std": 0.045172380231373155,
+        "synthetic_std": 0.04517233515526563,
+        "std_diff_pct": 9.978687706127295e-07,
+        "ks_statistic": 0.03337813294587722,
+        "ks_pvalue": 0.7184491046192286,
+        "warnings": []
+      },
+      "TSH": {
+        "status": "PASS",
+        "real_mean": 0.009174693631791443,
+        "synthetic_mean": 0.009340347799083598,
+        "mean_diff_pct": 0.018055553017938736,
+        "real_std": 0.04294102634485513,
+        "synthetic_std": 0.04290302066593257,
+        "std_diff_pct": 0.0008850668499941732,
+        "ks_statistic": 0.17838067562658919,
+        "ks_pvalue": 3.0206522453199605e-12,
+        "warnings": []
+      },
+      "T3": {
+        "status": "PASS",
+        "real_mean": 0.18673812110183982,
+        "synthetic_mean": 0.18674831303218872,
+        "mean_diff_pct": 5.457873458705022e-05,
+        "real_std": 0.07011236158461878,
+        "synthetic_std": 0.07008478457619377,
+        "std_diff_pct": 0.00039332591003554744,
+        "ks_statistic": 0.14041845259716673,
+        "ks_pvalue": 9.632115392775018e-08,
+        "warnings": []
+      },
+      "TT4": {
+        "status": "PASS",
+        "real_mean": 0.24957938833082685,
+        "synthetic_mean": 0.24957938833082688,
+        "mean_diff_pct": 1.1120940635866073e-16,
+        "real_std": 0.08064925017150898,
+        "synthetic_std": 0.08064925017150897,
+        "std_diff_pct": 1.720758442056424e-16,
+        "ks_statistic": 0.04742026879767526,
+        "ks_pvalue": 0.28687327227334464,
+        "warnings": []
+      },
+      "T4U": {
+        "status": "PASS",
+        "real_mean": 0.3791632633811834,
+        "synthetic_mean": 0.37916326338118334,
+        "mean_diff_pct": 1.4640435029553725e-16,
+        "real_std": 0.1024432369616972,
+        "synthetic_std": 0.1024432369616972,
+        "std_diff_pct": 0.0,
+        "ks_statistic": 0.06585397747911369,
+        "ks_pvalue": 0.048400958761876986,
+        "warnings": []
+      },
+      "FTI": {
+        "status": "PASS",
+        "real_mean": 0.2759459262114242,
+        "synthetic_mean": 0.2759459262114243,
+        "mean_diff_pct": 2.0116677203172878e-16,
+        "real_std": 0.07986276882341119,
+        "synthetic_std": 0.0798627688234112,
+        "std_diff_pct": 1.7377043160750376e-16,
+        "ks_statistic": 0.08666763530693788,
+        "ks_pvalue": 0.0032299487948425354,
+        "warnings": []
+      }
+    },
+    "warnings": [],
+    "passed": true
+  },
+  "outputs": {
+    "synthetic_csv": "data/processed/synthetic_data.csv",
+    "report_json": "outputs/synthetic_report.json",
+    "distribution_comparison_png": "outputs/distribution_comparison.png",
+    "synthetic_validation_plots_png": "outputs/synthetic_validation_plots.png"
+  }
+}

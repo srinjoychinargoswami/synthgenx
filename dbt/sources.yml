@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: synthgen
+    description: "SynthGen - Synthetic Clinical Data Generation Pipeline"
+    tables:
+      - name: thyroid_clean
+        description: "Raw thyroid dataset with missing values imputed and features standardized"
+        
+      - name: thyroid_clusters
+        description: "Cluster assignments for thyroid samples (clusters 0-3)"
